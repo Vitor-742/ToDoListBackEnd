@@ -1,4 +1,3 @@
-// const listModels = require('../models/listModels');
 const { ToDoList } = require('../../models');
 
 const getAll = async() => {
@@ -21,7 +20,7 @@ const deleteItem = async ({id}) => {
 
 const updateItem = async({id, item}) => {
     await ToDoList.update({item}, {where: {id}});
-    return {status: 200, json: {id, item, status: 'pendente'}};
+    return {status: 200, json: {id, item, status: 'pendente'}};// criar parte do statuss
 };
 
 module.exports = {

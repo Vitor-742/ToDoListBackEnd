@@ -13,4 +13,14 @@ listRouter.post('/', async (req, res) => {
     res.status(response.status).json(response.json);
 });
 
+listRouter.delete('/', async (req, res) => {
+    await listService.deleteItem(req.body);
+    res.status(204).end();
+});
+
+listRouter.put('/', async (req, res) => {
+    const response = await listService.updateItem(req.body);
+    res.status(response.status).json(response.json);
+});
+
 module.exports = listRouter;

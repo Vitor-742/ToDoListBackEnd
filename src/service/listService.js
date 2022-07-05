@@ -13,7 +13,20 @@ const createItem = async ({item}) => {
     return {status: 201, json: createdItem};
 };
 
+const deleteItem = async ({id}) => {
+    await ToDoList.destroy({
+        where: {id}
+    });
+};
+
+const updateItem = async({id, item}) => {
+    await ToDoList.update({item}, {where: {id}});
+    return {status: 200, json: {id, item, status: 'pendente'}};
+};
+
 module.exports = {
     getAll,
-    createItem
+    createItem,
+    deleteItem,
+    updateItem,
 };

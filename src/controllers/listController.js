@@ -14,7 +14,8 @@ listRouter.post('/', async (req, res) => {
 });
 
 listRouter.delete('/', async (req, res) => {
-    await listService.deleteItem(req.body);
+    const response = await listService.deleteItem(req.body);
+    if(response) res.status(response.status).json(response.json);
     res.status(204).end();
 });
 
